@@ -1,0 +1,11 @@
+.navbar {
+  background-color: #eee;
+  padding: 11px 0;
+
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 950px;
+  }
+}
