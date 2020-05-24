@@ -1,8 +1,8 @@
 import React from "react";
 import './Search.scss';
 import { connect } from "react-redux";
-import { setSearchAction } from "../../../../store";
 import UiSearch from "../../../../components/ui/Navbar/Search/UiSearch";
+import { setSearchAction } from '../../../../store/actions';
 
 interface SearchProps {
   setSearch: (value: string) => void;

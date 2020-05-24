@@ -8,10 +8,10 @@ interface BookProps {
 }
 
 function Book (props: BookProps) {
-  const {title, price, isbn, cover, synopsis} = props.book;
+  const {title, price, cover} = props.book;
   return (
       <article className="book">
-        <img className="book__cover" src={cover}/>
+        <img className="book__cover" src={cover} alt="book cover"/>
         <div className="book__panel">
           <h3 className="book__title">{title}</h3>
           <div className="book__price">{price} $</div>
