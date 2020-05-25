@@ -1,26 +1,12 @@
-import React from 'react';
+import UiBook from '../../../../components/ui/UiBook/UiBook';
+import { connect } from 'react-redux';
+import { addToCartAction } from '../../../../store/actions';
 
-import './Book.scss';
-import { BookType } from '../../book.types';
-
-interface BookProps {
-  book: BookType;
+const mapDispatchToProps = {
+  addToCart: addToCartAction,
 }
 
-function Book (props: BookProps) {
-  const {title, price, cover} = props.book;
-  return (
-      <article className="book">
-        <img className="book__cover" src={cover} alt="book cover"/>
-        <div className="book__panel">
-          <h3 className="book__title">{title}</h3>
-          <div className="book__price">{price} $</div>
-          <div className="book__cart">
-            <button>Add to cart</button>
-          </div>
-        </div>
-      </article>
-  );
-}
-
-export default Book;
+export default connect(
+    null,
+    mapDispatchToProps,
+)(UiBook);

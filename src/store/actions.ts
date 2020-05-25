@@ -1,4 +1,4 @@
-import { SET_BOOKS, SET_SEARCH } from './actionTypes';
+import { ADD_TO_CART, SET_BOOKS, SET_SEARCH } from './actionTypes';
 import { BookType } from '../App/Library/book.types';
 import { Dispatch } from 'redux';
 import { getBooks } from '../App/Library/book.service';
@@ -13,7 +13,14 @@ interface SetBooksAction {
   books: BookType[];
 }
 
-export type Action = SetSearchAction | SetBooksAction;
+interface AddToCartAction {
+  type: typeof ADD_TO_CART;
+  book: BookType;
+}
+
+export type Action = SetSearchAction
+    | SetBooksAction
+    | AddToCartAction;
 
 export function setSearchAction (search: string): SetSearchAction {
   return {
@@ -26,6 +33,13 @@ export function setBooksAction (books: BookType[]): SetBooksAction {
   return {
     type: SET_BOOKS,
     books,
+  };
+}
+
+export function addToCartAction(book: BookType): AddToCartAction {
+  return {
+    type: ADD_TO_CART,
+    book,
   };
 }
 
