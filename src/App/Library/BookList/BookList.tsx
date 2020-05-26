@@ -1,9 +1,9 @@
 import React from 'react';
 
 import './BookList.scss';
-import { BookType } from '../book.types';
+import { BookType } from './book.types';
 import Book from './Book/Book';
-import { bookFilter } from '../book.service';
+import { bookFilter } from './book.service';
 import { State } from '../../../store/reducers';
 import { connect } from 'react-redux';
 

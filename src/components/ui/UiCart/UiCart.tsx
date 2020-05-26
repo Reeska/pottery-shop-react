@@ -1,24 +1,41 @@
 import React from 'react';
-
-import { BookType } from '../../../App/Library/book.types';
 import './UiCart.scss';
+import { CartState } from '../../../store/reducers';
 
 interface CartProps {
-  cart: BookType[];
+  cart: CartState;
 }
 
 function UiCart (props: CartProps) {
-  const {cart} = props;
+  const {items, total} = props.cart;
   return (
-      <div>
-        <h2>Cart</h2>
-        {!cart.length
+      <div className="cart">
+        <h1>Cart</h1>
+        {!items.length
             ? <p>No items in your cart.</p>
-            : <ul>
-              {cart.map(book =>
-                  <li key={book.isbn}>{book.title} - {book.price}</li>
+            :
+            <table className="items">
+              <thead>
+              <tr>
+                <th>Item</th>
+                <th>Price</th>
+              </tr>
+              </thead>
+              <tbody>
+              {items.map(book =>
+                  <tr key={book.isbn}>
+                    <td>{book.title}</td>
+                    <td className="price">{book.price} $</td>
+                  </tr>
               )}
-            </ul>
+              </tbody>
+              <tfoot>
+              <tr>
+                <td>Total</td>
+                <td className="price total">{total} $</td>
+              </tr>
+              </tfoot>
+            </table>
         }
       </div>
   );

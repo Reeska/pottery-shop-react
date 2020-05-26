@@ -1,7 +1,7 @@
 import { ADD_TO_CART, SET_BOOKS, SET_SEARCH } from './actionTypes';
-import { BookType } from '../App/Library/book.types';
+import { BookType } from '../App/Library/BookList/book.types';
 import { Dispatch } from 'redux';
-import { getBooks } from '../App/Library/book.service';
+import { getBooks } from '../App/Library/BookList/book.service';
 
 interface SetSearchAction {
   type: typeof SET_SEARCH;

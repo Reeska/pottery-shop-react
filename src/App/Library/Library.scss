@@ -1,4 +1,6 @@
+@import '../../styles/variables';
+
 .library {
   margin: auto;
-  width: 950px;
+  max-width: $main-width;
 }

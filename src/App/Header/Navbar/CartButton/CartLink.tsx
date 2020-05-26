@@ -2,19 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import UiCartButton from '../../../../components/ui/Navbar/UiCartButton/UiCartButton';
+import UiCartLink from '../../../../components/ui/Navbar/UiCartLink/UiCartLink';
 import { State } from '../../../../store/reducers';
-import { BookType } from '../../../Library/book.types';
+import { BookType } from '../../../Library/BookList/book.types';
 
-interface CartButtonProps {
+interface CartLinkProps {
   count: number;
 }
 
-function CartButton ({count}: CartButtonProps) {
+function CartLink ({count}: CartLinkProps) {
   return (
-      <Link to="/cart">
-        <UiCartButton count={count}/>
-      </Link>
+      <Link to="/cart"><UiCartLink count={count}/></Link>
   );
 }
 
@@ -23,9 +21,9 @@ function getCartLength (cart: BookType[]): number {
 }
 
 const mapStateToProps = (state: State) => ({
-  count: getCartLength(state.cart),
+  count: getCartLength(state.cart.items),
 });
 
 export default connect(
     mapStateToProps,
-)(CartButton);
+)(CartLink);

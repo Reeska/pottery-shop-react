@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './UiBook.scss';
-import { BookType } from '../../../App/Library/book.types';
+import { BookType } from '../../../App/Library/BookList/book.types';
 
 interface BookProps {
   book: BookType;

@@ -1,7 +1,7 @@
 import React from "react";
 import './Navbar.scss';
 import Search from "./Search/Search";
-import CartButton from "./CartButton/CartButton";
+import CartButton from "./CartButton/CartLink";
 
 function Navbar () {
   return (

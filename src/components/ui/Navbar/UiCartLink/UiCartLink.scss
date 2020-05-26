@@ -1,0 +1,26 @@
+.cart-link {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: white;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid #999;
+
+  &:hover {
+    background-color: #e1ebff;
+  }
+
+  .label {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .badge {
+    background-color: #ffc800;
+    padding: 3px 8px;
+    border-radius: 15px;
+    margin-left: 4px;
+  }
+}

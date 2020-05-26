@@ -1,7 +1,17 @@
+@import '../../../../styles/mixins';
+
 .search {
+  display: flex;
+  width: 100%;
+  margin-right: 6px;
+
   .input {
-    width: 400px;
     padding: 11px 4px;
     font-size: 1rem;
+    flex: 1;
+  }
+
+  @include desktop {
+    width: 400px;
   }
 }
