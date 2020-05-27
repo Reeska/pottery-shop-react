@@ -1,7 +1,7 @@
-import { BookType } from './book.types';
 import axios from 'axios';
 
-const API_DOMAIN = 'http://henri-potier.xebia.fr';
+import { BookType } from './book.types';
+import { API_DOMAIN } from '../../../config';
 
 export function getBooks (): Promise<BookType[]> {
   return axios

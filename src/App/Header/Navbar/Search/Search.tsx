@@ -22,7 +22,7 @@ function Search ({onChanged}: SearchProps) {
 }
 
 const mapDispatchToProps: SearchProps = {
-  onChanged: (value: string) => setSearchAction(value)
+  onChanged: setSearchAction,
 };
 
 export default connect(

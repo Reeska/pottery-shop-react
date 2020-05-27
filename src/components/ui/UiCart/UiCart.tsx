@@ -7,7 +7,7 @@ interface CartProps {
 }
 
 function UiCart (props: CartProps) {
-  const {items, total} = props.cart;
+  const {items, total, totalWithPromo} = props.cart;
   return (
       <div className="cart">
         <h1>Cart</h1>
@@ -33,6 +33,10 @@ function UiCart (props: CartProps) {
               <tr>
                 <td>Total</td>
                 <td className="price total">{total} $</td>
+              </tr>
+              <tr>
+                <td>Total with promo</td>
+                <td className="price total">{totalWithPromo} $</td>
               </tr>
               </tfoot>
             </table>
