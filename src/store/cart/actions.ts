@@ -5,11 +5,7 @@ import {
 } from 'redux-thunk'
 
 import { State } from '../reducers'
-import { BookType } from '../../domains/books/book.types'
-import {
-  calculateTotal,
-  getOffers,
-} from '../../domains/cart/cart.service'
+import { getOffers } from '../../domains/cart/cart.service'
 import { Offer } from '../../domains/cart/cart.types'
 
 export const ADD_TO_CART = 'ADD_TO_CART';
@@ -18,12 +14,7 @@ export const SET_OFFERS = 'SET_OFFERS';
 
 interface AddToCartAction extends ReduxAction {
   type: typeof ADD_TO_CART;
-  book: BookType;
-}
-
-interface SetCartTotalAction extends ReduxAction {
-  type: typeof SET_CART_TOTAL;
-  total: number;
+  bookIsbn: string;
 }
 
 interface SetOffersAction extends ReduxAction {
@@ -33,21 +24,13 @@ interface SetOffersAction extends ReduxAction {
 
 export type CartAction =
   | AddToCartAction
-  | SetCartTotalAction
   | SetOffersAction
   ;
 
-export function setCartTotal(total: number): SetCartTotalAction {
-  return {
-    type: SET_CART_TOTAL,
-    total,
-  }
-}
-
-export function addToCartAction(book: BookType): AddToCartAction {
+export function addToCartAction(bookIsbn: string): AddToCartAction {
   return {
     type: ADD_TO_CART,
-    book,
+    bookIsbn,
   }
 }
 
@@ -58,16 +41,13 @@ export function setOffersAction(offers: Offer[]): SetOffersAction {
   }
 }
 
-export function addToCart(book: BookType): ThunkAction<void, State, any, CartAction> {
+export function addToCart(bookIsbn: string): ThunkAction<void, State, any, CartAction> {
   return async (dispatch: ThunkDispatch<State, any, CartAction>, getState: () => State) => {
-    dispatch(addToCartAction(book))
+    dispatch(addToCartAction(bookIsbn))
 
-    const {cart: {items}} = getState()
-    const total = calculateTotal(items)
+    const {cart: {itemsIsbns}} = getState()
 
-    dispatch(setCartTotal(total))
-
-    const {offers} = await getOffers(items)
+    const {offers} = await getOffers(itemsIsbns)
 
     dispatch(setOffersAction(offers))
   }

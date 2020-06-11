@@ -1,29 +1,18 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import UiCartLink from '../../../../components/ui/Navbar/UiCartLink/UiCartLink';
-import { State } from '../../../../store/reducers';
-import { BookType } from '../../../../domains/books/book.types';
+import UiCartLink from '../../../../components/ui/Navbar/UiCartLink/UiCartLink'
+import { getCartLength } from '../../../../store/cart/selectors'
 
-interface CartLinkProps {
-  count: number;
-}
+function CartLink() {
+  const count = useSelector(getCartLength)
 
-function CartLink ({count}: CartLinkProps) {
   return (
-      <Link to="/cart"><UiCartLink count={count}/></Link>
-  );
+    <Link to="/cart">
+      <UiCartLink count={count}/>
+    </Link>
+  )
 }
 
-function getCartLength (cart: BookType[]): number {
-  return cart.length;
-}
-
-const mapStateToProps = (state: State) => ({
-  count: getCartLength(state.cart.items),
-});
-
-export default connect(
-    mapStateToProps,
-)(CartLink);
+export default CartLink

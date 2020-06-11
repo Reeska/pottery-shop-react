@@ -20,3 +20,13 @@ export function bookFilter (filter: string) {
 export function getBooksFilterBySearch(books: BookType[], search: string): BookType[] {
   return books.filter(bookFilter(search))
 }
+
+export function getBooksFilterByIsbns(books: BookType[], isbns: string[]): BookType[] {
+  return isbns
+    .map(isbn => books.find(book => book.isbn === isbn))
+    .filter(isBook)
+}
+
+export function isBook(item: BookType | undefined): item is BookType {
+  return item !== undefined
+}

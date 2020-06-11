@@ -1,21 +1,17 @@
-import { BookType } from '../../domains/books/book.types'
 import { Offer } from '../../domains/cart/cart.types'
 import {
   ADD_TO_CART,
   CartAction,
-  SET_CART_TOTAL,
   SET_OFFERS,
 } from './actions'
 
 export interface CartState {
-  items: BookType[];
-  total: number;
+  itemsIsbns: string[];
   offers: Offer[]
 }
 
-export const initialCartState = {
-  items: [],
-  total: 0,
+export const initialCartState: CartState = {
+  itemsIsbns: [],
   offers: [],
 }
 
@@ -24,15 +20,10 @@ export function cartReducer(state: CartState = initialCartState, action: CartAct
     case ADD_TO_CART:
       return {
         ...state,
-        items: [
-          ...state.items,
-          action.book,
+        itemsIsbns: [
+          ...state.itemsIsbns,
+          action.bookIsbn,
         ],
-      }
-    case SET_CART_TOTAL:
-      return {
-        ...state,
-        total: action.total,
       }
     case SET_OFFERS:
       return {

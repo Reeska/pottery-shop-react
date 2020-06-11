@@ -21,7 +21,7 @@ function BookList() {
   const dispatch = useDispatch()
 
   const handleAddToCart = useCallback(
-    (book: BookType) => dispatch(addToCart(book)),
+    (book: BookType) => dispatch(addToCart(book.isbn)),
     [dispatch]
   )
 

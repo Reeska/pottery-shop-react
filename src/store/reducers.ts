@@ -17,3 +17,9 @@ export interface State {
   books: BooksState;
   cart: CartState;
 }
+
+export const rootReducer = combineReducers({
+  search: searchReducer,
+  books: booksReducer,
+  cart: cartReducer,
+})
