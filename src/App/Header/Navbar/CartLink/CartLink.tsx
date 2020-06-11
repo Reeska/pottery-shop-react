@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import UiCartLink from '../../../../components/ui/Navbar/UiCartLink/UiCartLink';
 import { State } from '../../../../store/reducers';
-import { BookType } from '../../../Library/BookList/book.types';
+import { BookType } from '../../../../domains/books/book.types';
 
 interface CartLinkProps {
   count: number;

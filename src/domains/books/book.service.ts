@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { BookType } from './book.types';
-import { API_DOMAIN } from '../../../config';
+import { API_DOMAIN } from '../../config';
 
 export function getBooks (): Promise<BookType[]> {
   return axios
@@ -15,4 +15,8 @@ export function bookFilter (filter: string) {
   return (book: BookType) => !filter
       || book.title.toLowerCase().includes(lowerCaseFilter)
       || book.synopsis.join().toLowerCase().includes(lowerCaseFilter);
+}
+
+export function getBooksFilterBySearch(books: BookType[], search: string): BookType[] {
+  return books.filter(bookFilter(search))
 }

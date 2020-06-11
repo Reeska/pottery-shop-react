@@ -1,41 +1,37 @@
-import React from 'react';
+import React, {
+  useCallback,
+  useEffect,
+} from 'react'
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux'
 
-import './BookList.scss';
-import { BookType } from './book.types';
-import Book from './Book/Book';
-import { bookFilter } from './book.service';
-import { State } from '../../../store/reducers';
-import { connect } from 'react-redux';
+import { BookType } from '../../../domains/books/book.types'
+import { State } from '../../../store/reducers'
+import UiBookList from '../../../components/ui/UiBookList/UiBookList'
 
-interface BookListProps {
-  search: string;
-  books: BookType[];
-}
+import { addToCart } from '../../../store/cart/actions'
+import { loadBooks } from '../../../store/books/actions'
+import { selectFilteredBooks } from '../../../store/books/selectors'
 
-function BookList ({books, search}: BookListProps) {
+function BookList() {
+  const search = useSelector((state: State) => state.search)
+  const books = useSelector(selectFilteredBooks)
+  const dispatch = useDispatch()
+
+  const handleAddToCart = useCallback(
+    (book: BookType) => dispatch(addToCart(book)),
+    [dispatch]
+  )
+
+  useEffect(() => {
+    dispatch(loadBooks())
+  }, [dispatch])
+
   return (
-      <div className="book-list">
-        <h1>Library</h1>
-        {search && (
-            <p>{books.length > 0
-                ? <>List filtered with</>
-                : <>No results for</>
-            } &laquo; {search} &raquo;</p>
-        )}
-        {books.map(book => <Book key={book.isbn} book={book}/>)}
-      </div>
-  );
+    <UiBookList search={search} books={books} addToCart={handleAddToCart}/>
+  )
 }
 
-function getBooksFilterBySearch (books: BookType[], search: string): BookType[] {
-  return books.filter(bookFilter(search));
-}
-
-const mapStateToProps = (state: State) => ({
-  search: state.search,
-  books: getBooksFilterBySearch(state.books, state.search),
-});
-
-export default connect(
-    mapStateToProps,
-)(BookList);
+export default BookList

@@ -1,31 +1,30 @@
-import { connect } from 'react-redux';
-import React from 'react';
+import React from 'react'
+import {
+  useDispatch,
+  useSelector
+} from 'react-redux'
 
-import UiSearch from '../../../../components/ui/Navbar/UiSearch/UiSearch';
-import { setSearchAction } from '../../../../store/actions';
-import { useHistory } from 'react-router-dom';
+import UiSearch from '../../../../components/ui/Navbar/UiSearch/UiSearch'
+import { useHistory } from 'react-router-dom'
+import { State } from '../../../../store/reducers'
+import { setSearchAction } from '../../../../store/search/actions'
 
-interface SearchProps {
-  onChanged: (value: string) => void;
-}
+function Search() {
+  const search = useSelector((state: State) => state.search)
+  const history = useHistory()
+  const dispatch = useDispatch()
 
-function Search ({onChanged}: SearchProps) {
-  const history = useHistory();
+  function handleEnter() {
+    history.push('/')
+  }
 
-  function handleEnter () {
-    history.push('/');
+  function onChanged(search: string) {
+    dispatch(setSearchAction(search))
   }
 
   return (
-      <UiSearch onChanged={onChanged} onEnter={handleEnter}/>
-  );
+    <UiSearch value={search} onChanged={onChanged} onEnter={handleEnter}/>
+  )
 }
 
-const mapDispatchToProps: SearchProps = {
-  onChanged: setSearchAction,
-};
-
-export default connect(
-    null,
-    mapDispatchToProps,
-)(Search);
+export default Search

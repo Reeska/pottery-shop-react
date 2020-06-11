@@ -1,28 +1,32 @@
-import React, { KeyboardEvent } from 'react';
-import './UiSearch.scss';
+import React, {
+  ChangeEvent,
+  KeyboardEvent,
+  useCallback,
+} from 'react'
+import './UiSearch.scss'
 
 export interface UiSearchProps {
-  onChanged?: (value: string) => void;
-  onEnter?: (value: string) => void;
+  value: string;
+  onChanged: (value: string) => void;
+  onEnter: (value: string) => void;
 }
 
-const ENTER_KEYCODE = 13;
+const ENTER_KEYCODE = 13
 
-function UiSearch (props: UiSearchProps) {
-  function handleKeypress (event: KeyboardEvent<HTMLInputElement>) {
-    const searchValue = event.currentTarget.value;
+function UiSearch({value, onEnter, onChanged}: UiSearchProps) {
+  const handleEnter = useCallback((event: KeyboardEvent<HTMLInputElement>) => {
     if (event.keyCode === ENTER_KEYCODE) {
-      props.onEnter?.(searchValue);
-    } else {
-      props.onChanged?.(searchValue);
+      onEnter(event.currentTarget.value)
     }
-  }
+  }, [onEnter])
+
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => onChanged(event.currentTarget.value)
 
   return (
-      <span className="search">
-        <input className="input" placeholder="Search" onKeyUp={handleKeypress}/>
-      </span>
-  );
+    <span className="search">
+      <input className="input" value={value} placeholder="Search" onKeyUp={handleEnter} onChange={onChange}/>
+    </span>
+  )
 }
 
-export default UiSearch;
+export default UiSearch

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import { BookType } from '../BookList/book.types';
-import { API_DOMAIN } from '../../../config';
+import { BookType } from '../books/book.types';
+import { API_DOMAIN } from '../../config';
 import { Offer, Offers, OfferType } from './cart.types';
 
 export function calculateTotal (books: BookType[]) {

@@ -6,9 +6,6 @@ import './index.css';
 import App from './App/App';
 import { Provider as ReduxProvider } from 'react-redux';
 import store from './store';
-import { loadBooks } from './store/actions';
-
-loadBooks(store.dispatch)
 
 ReactDOM.render(
     <React.StrictMode>
