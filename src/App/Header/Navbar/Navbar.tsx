@@ -1,16 +1,15 @@
 import React from 'react'
-import './Navbar.scss'
+
 import Search from './Search/Search'
 import CartButton from './CartLink/CartLink'
+import { UiNavbar } from '@pottery-ui/react'
 
 function Navbar() {
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <Search/>
-        <CartButton/>
-      </div>
-    </nav>
+    <UiNavbar>
+      <Search/>
+      <CartButton/>
+    </UiNavbar>
   )
 }
 

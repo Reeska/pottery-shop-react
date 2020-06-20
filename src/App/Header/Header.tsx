@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Navbar from './Navbar/Navbar';
-import './Header.scss';
+import { UiHeader } from '@pottery-ui/react'
 
 function Header () {
   return (
-      <header className="header">
-        <h1><Link to="/">Pottery Shop</Link></h1>
-        <Navbar/>
-      </header>
+    <UiHeader>
+      <h1><Link to="/">Pottery Shop</Link></h1>
+      <Navbar/>
+    </UiHeader>
   );
 }
 

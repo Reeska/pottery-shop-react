@@ -6,11 +6,9 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux'
+import { UiBookList } from '@pottery-ui/react'
 
-import { BookType } from '../../../domains/books/book.types'
 import { State } from '../../../store/reducers'
-import UiBookList from '../../../components/ui/UiBookList/UiBookList'
-
 import { addToCart } from '../../../store/cart/actions'
 import { loadBooks } from '../../../store/books/actions'
 import { selectFilteredBooks } from '../../../store/books/selectors'
@@ -21,7 +19,7 @@ function BookList() {
   const dispatch = useDispatch()
 
   const handleAddToCart = useCallback(
-    (book: BookType) => dispatch(addToCart(book.isbn)),
+    (event: CustomEvent<string>) => dispatch(addToCart(event.detail)),
     [dispatch]
   )
 
@@ -30,7 +28,7 @@ function BookList() {
   }, [dispatch])
 
   return (
-    <UiBookList search={search} books={books} addToCart={handleAddToCart}/>
+    <UiBookList search={search} books={books} onAddToCart={handleAddToCart} />
   )
 }
 

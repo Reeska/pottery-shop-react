@@ -1,12 +1,12 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import UiCart from '../../../components/ui/UiCart/UiCart'
 import {
   getCartItems,
   getTotal,
   getTotalWithPromo,
 } from '../../../store/cart/selectors'
+import { UiCart } from '@pottery-ui/react'
 
 function Cart() {
   const items = useSelector(getCartItems)
@@ -14,7 +14,7 @@ function Cart() {
   const totalWithPromo = useSelector(getTotalWithPromo)
 
   return (
-    <UiCart items={items} total={total} totalWithPromo={totalWithPromo}/>
+    <UiCart items={items} total={total} totalWithPromo={totalWithPromo} />
   )
 }
 
