@@ -1,18 +1,18 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import './Library.scss';
 import BookList from './BookList/BookList';
 import Cart from './Cart/Cart';
+import { UiMain } from '@pottery-ui/react'
 
 function Library () {
   return (
-      <div className="library">
+      <UiMain>
         <Switch>
           <Route exact path="/" component={BookList}/>
           <Route path="/cart" component={Cart}/>
         </Switch>
-      </div>
+      </UiMain>
   );
 }
 
