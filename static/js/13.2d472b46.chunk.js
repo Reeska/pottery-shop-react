@@ -1,0 +1,2 @@
+(this["webpackJsonppottery-shop"]=this["webpackJsonppottery-shop"]||[]).push([[13],{441:function(t,n,o){"use strict";o.r(n),o.d(n,"ui_main",(function(){return r}));var e=o(12),r=function(){function t(t){Object(e.j)(this,t)}return t.prototype.render=function(){return Object(e.h)(e.b,null,Object(e.h)("slot",null))},t}();r.style=":host{display:block;margin:auto;max-width:950px}"}}]);
+//# sourceMappingURL=13.2d472b46.chunk.js.map

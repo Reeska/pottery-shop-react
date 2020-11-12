@@ -1,0 +1,2 @@
+(this["webpackJsonppottery-shop"]=this["webpackJsonppottery-shop"]||[]).push([[12],{440:function(t,n,o){"use strict";o.r(n),o.d(n,"ui_header",(function(){return p}));var e=o(12),p=function(){function t(t){Object(e.j)(this,t)}return t.prototype.render=function(){return Object(e.h)(e.b,null,Object(e.h)("slot",null))},t}();p.style=":host{display:block;background-color:#ccc}::slotted(h1){margin:0;padding-left:100px;padding-top:50px;padding-bottom:50px;letter-spacing:10px}"}}]);
+//# sourceMappingURL=12.9f5a8b14.chunk.js.map
