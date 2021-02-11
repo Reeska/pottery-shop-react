@@ -1,1 +1,1 @@
-export const API_DOMAIN = 'http://henri-potier.xebia.fr';
+export const API_DOMAIN = 'https://henri-potier.web.app';
