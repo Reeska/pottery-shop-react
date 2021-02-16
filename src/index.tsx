@@ -20,3 +20,9 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+// Hot Module Replacement (HMR) - Remove this snippet to remove HMR.
+// Learn more: https://snowpack.dev/concepts/hot-module-replacement
+if (import.meta.hot) {
+  import.meta.hot.accept();
+}
