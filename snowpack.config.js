@@ -7,8 +7,11 @@ module.exports = {
   plugins: [
     '@snowpack/plugin-react-refresh',
     '@snowpack/plugin-dotenv',
-    '@snowpack/plugin-typescript',
     '@snowpack/plugin-sass',
+    [
+      '@snowpack/plugin-typescript',
+      { args: '--project tsconfig.app.json' },
+    ],
   ],
   routes: [
     /* Enable an SPA Fallback in development: */
@@ -27,4 +30,8 @@ module.exports = {
   buildOptions: {
     /* ... */
   },
+  exclude: [
+    '**/*.test.ts',
+    '**/*.test.tsx',
+  ]
 };
