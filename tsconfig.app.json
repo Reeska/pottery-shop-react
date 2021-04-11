@@ -3,6 +3,6 @@
   "exclude": [
     "**/*.test.ts",
     "**/*.test.tsx",
-    "tests/setupTests.ts"
+    "tests/**/*"
   ]
 }
